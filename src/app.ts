@@ -30,7 +30,7 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 
     return response.status(500).json({
         static: 'error',
-        message: 'Erro interno.',
+        message: 'Internal error.',
     })
 })
 
