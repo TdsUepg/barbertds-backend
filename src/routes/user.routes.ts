@@ -1,10 +1,8 @@
 import { Router } from 'express'
-import userResolver from '../resolvers/user'
+import userController from '../controllers/user'
 
 const userRouter = Router()
 
-userRouter.post('/', userResolver.createUser)
-
-userRouter.get('/', userResolver.authUser)
+userRouter.post('/login', userController.login)
 
 export default userRouter

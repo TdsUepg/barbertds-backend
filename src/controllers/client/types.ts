@@ -1,7 +1,7 @@
 export type ClientRequest = {
-    firstName: string
-    lastName: string
+    name: string
     cpf: string
     email: string
     password: string
+    cellPhone: Array<string>
 }

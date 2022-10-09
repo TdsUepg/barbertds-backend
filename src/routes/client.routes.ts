@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import clientResolver from '../resolvers/client'
+import clientController from '../controllers/client'
 
 const clientRouter = Router()
 
-clientRouter.post('/', clientResolver.createClient)
+clientRouter.post('/', clientController.createClient)
 
 export default clientRouter
