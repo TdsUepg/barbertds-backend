@@ -4,7 +4,7 @@ import { compare } from 'bcryptjs'
 import authConfig from '../../config/auth'
 import db from '../../db'
 import AppError from '../../errors/AppError'
-import { Client, Barber, LoginRequest, isBarber } from './types'
+import { IUser, LoginRequest, isBarber } from './types'
 
 const login = async (request: Request, response: Response) => {
     const { email, password }: LoginRequest = request.body
@@ -33,7 +33,7 @@ const login = async (request: Request, response: Response) => {
     }
 
     const userId = docRef.docs[0].id
-    const loginUserDoc = docRef.docs[0].data() as Client | Barber
+    const loginUserDoc = docRef.docs[0].data() as IUser
 
     if (isBarber(loginUserDoc) && !loginUserDoc.accessAuthorization) {
         throw new AppError('Not authorized user')
