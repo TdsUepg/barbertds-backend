@@ -36,7 +36,7 @@ const createClient = async (request: Request, response: Response) => {
         ...clientWithoutPassword,
     })
 
-    response.json(clientWithoutPassword)
+    return response.json(clientWithoutPassword)
 }
 
 export default createClient

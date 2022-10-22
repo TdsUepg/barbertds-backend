@@ -46,7 +46,7 @@ const login = async (request: Request, response: Response) => {
         expiresIn,
     })
 
-    response.json({
+    return response.json({
         user: loginUserDoc,
         token,
         role,

@@ -2,6 +2,7 @@ import 'reflect-metadata'
 import express, { NextFunction, Request, Response } from 'express'
 import 'express-async-errors'
 import cors from 'cors'
+import { CorsOptions } from 'cors'
 import helmet from 'helmet'
 import * as dotenv from 'dotenv'
 import routes from './routes'
@@ -11,8 +12,12 @@ dotenv.config()
 
 const app = express()
 
+const corsOptions: CorsOptions = {
+    origin: '*',
+}
+
 app.use(helmet())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.use((request, response, next) => {
