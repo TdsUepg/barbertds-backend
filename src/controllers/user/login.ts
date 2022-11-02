@@ -47,7 +47,7 @@ const login = async (request: Request, response: Response) => {
     })
 
     return response.json({
-        user: loginUserDoc,
+        user: { ...loginUserDoc, cpf: undefined },
         token,
         role,
     })
