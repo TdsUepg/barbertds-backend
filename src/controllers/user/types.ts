@@ -8,6 +8,7 @@ export interface User {
 }
 
 export interface Barber {
+    id: string
     cellPhone?: Array<string>
     cpf: string
     name: string
@@ -16,6 +17,7 @@ export interface Barber {
 }
 
 export interface Client {
+    id: string
     cellPhone?: Array<string>
     cpf: string
     name: string
