@@ -7,11 +7,13 @@ import * as Types from './types'
 const createClient = async (request: Request, response: Response) => {
     const client: Types.ClientRequest = request.body
 
-    const clientDocRef = db.collection('Client').doc(client.cpf)
+    const clientDocRef = db
+        .collection('Client')
+        .where('email', '==', client.email)
 
     const clientDoc = await clientDocRef.get()
 
-    if (clientDoc.exists) {
+    if (!clientDoc.empty) {
         throw new AppError('Client already exists')
     }
 
@@ -32,7 +34,9 @@ const createClient = async (request: Request, response: Response) => {
 
     const { password: _, ...clientWithoutPassword } = client
 
-    await clientDocRef.set({
+    const newClientDocRef = db.collection('Client').doc()
+
+    await newClientDocRef.set({
         ...clientWithoutPassword,
     })
 
