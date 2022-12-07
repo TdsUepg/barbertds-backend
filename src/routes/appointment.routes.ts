@@ -9,10 +9,23 @@ appointmentRouter.post(
     ensureAuthenticated,
     appointmentController.createAppointment
 )
+
+appointmentRouter.put(
+    '/:id',
+    ensureAuthenticated,
+    appointmentController.updateAppointment
+)
+
 appointmentRouter.get(
     '/client/:id',
     ensureAuthenticated,
     appointmentController.listAppointmentByClient
+)
+
+appointmentRouter.get(
+    '/barber/:id/day/:day',
+    ensureAuthenticated,
+    appointmentController.listAppointmentByBarber
 )
 
 export default appointmentRouter

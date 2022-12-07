@@ -39,7 +39,7 @@ const createAppointment = async (request: Request, response: Response) => {
             barberId: barber.id,
             clientId: client.id,
             serviceStatus: Types.ServiceStatus.WAITING,
-            endTime: appointmentData.startTime,
+            endTime: appointmentData.endTime,
         }
 
         await appoinmentDocRef.add(newAppointment)
