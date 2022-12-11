@@ -30,13 +30,18 @@ const fetchBarbersByService = async (request: Request, response: Response) => {
     if (appointmentDoc.empty || !appointmentDoc.docs.length) {
         if (day > now) {
             return response.json({
-                hours: availableHours,
+                hours: availableHours.filter(
+                    (availableHour) =>
+                        availableHour >= '13:00' || availableHour <= '11:30'
+                ),
             })
         }
 
         return response.json({
             hours: availableHours.filter(
-                (availableHour) => availableHour > hour
+                (availableHour) =>
+                    availableHour > hour &&
+                    (availableHour >= '13:00' || availableHour <= '11:30')
             ),
         })
     }
@@ -62,7 +67,11 @@ const fetchBarbersByService = async (request: Request, response: Response) => {
     })
 
     return response.json({
-        hours: responseHours.filter((availableHour) => availableHour > hour),
+        hours: responseHours.filter(
+            (availableHour) =>
+                availableHour > hour &&
+                (availableHour >= '13:00' || availableHour <= '11:30')
+        ),
     })
 }
 

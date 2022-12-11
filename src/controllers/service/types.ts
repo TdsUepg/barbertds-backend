@@ -1,7 +1,7 @@
 export type Service = {
     id: string
     name: string
-    serviceTime: number
+    serviceTime: string
     value: number
     iconName: string
     user: {
@@ -13,7 +13,7 @@ export type Service = {
 export type CreateServiceRequest = {
     id: string
     name: string
-    serviceTime: number
+    serviceTime: string
     value: number
     iconName: string
     user: {
